@@ -1,19 +1,20 @@
 pipeline {
-agent any
-stages {
-  stage('Build') {
-    steps {
-      sh 'echo "This is my first step"'
+  agent any
+  stages {
+    stage('Build') {
+      steps {
+        sh 'npm install'
+      }
     }
-  }
-  stage('Test') {
-    steps
-      sh 'echo "This is my Test step"'
+    stage('Test') {
+      steps {
+        sh 'npm test'
+      }
     }
-  }
-  stage('Deploy') {
-    steps {
-      sh 'echo "This is my Deploy step"'
+    stage('Deploy') {
+      steps {
+        sh 'npm run deploy'
+      }
     }
   }
 }

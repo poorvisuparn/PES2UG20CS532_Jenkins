@@ -3,18 +3,26 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'npm install'
+        sh 'mvn clean install'
+        echo 'Build successful'
       }
     }
     stage('Test') {
       steps {
         sh 'npm test'
+        echo 'Test successful'
       }
     }
     stage('Deploy') {
       steps {
-        sh 'npm run deploy'
+        sh 'mvn deploy'
+        echo 'Deployment successful'
       }
+    }
+  }
+  post {
+    failure {
+      echo 'Pipeline failed'
     }
   }
 }

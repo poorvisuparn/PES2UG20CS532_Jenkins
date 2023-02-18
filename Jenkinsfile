@@ -9,7 +9,7 @@ pipeline {
     }
     stage('Test') {
       steps {
-        sh 'npm test'
+        sh 'mvn test'
         echo 'Test successful'
       }
     }
